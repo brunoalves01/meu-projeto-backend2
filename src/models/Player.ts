@@ -52,4 +52,13 @@ export class Player {
         }
         return `O player ${this.name} foi curado em ${heal} pontos de vida e agora tem ${this.health} de vida.`;
     }
+
+    public levelUp(level: number): string {
+        this.level += level;    
+        if (this.level > 10) {
+            this.level = 10; 
+            return `O player ${this.name} atingiu o nível máximo!`;
+        }
+    return `O player ${this.name} subiu para o nível ${this.level}!`;
+}
 }

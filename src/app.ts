@@ -68,6 +68,15 @@ app.post("/player/damage", (req: Request, res: Response) => {
             currentLevel: player.level,
         });
     });
+    app.post("/player/levelup", (req: Request, res: Response) => {
+        const { level } = req.body;
+        const LevelUpMessage = player.levelUp(level);
+        res.json({
+            action: LevelUpMessage,
+            currentHealth: player.health,
+            currentLevel: player.level,
+        });
+    });
 
 
 
@@ -81,4 +90,5 @@ app.listen(PORT, () => {
     console.log(`POST http://localhost:${PORT}/player/attack - Simular ataque do player`);
     console.log(`POST http://localhost:${PORT}/player/damage - Simular dano recebido pelo player`);
     console.log(`POST http://localhost:${PORT}/player/heal - Simular cura do player`);
+    console.log(`POST http://localhost:${PORT}/player/levelUp - Simular aumento de nível do player`);
 });
